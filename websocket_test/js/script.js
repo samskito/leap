@@ -22,4 +22,8 @@ $(document).ready(function(){
 		dump.find('div').text(JSON.stringify(JSON.parse(data.data), undefined, 2));
 	}
 	
+	$('#dump_button').on('click', function(e){
+		alert('ok');
+	});
+	
 });
