@@ -2,9 +2,10 @@ $(document).ready(function(){
 	
 	var info_websocket = $('#connection');
 	var dump = $('#dump_container');
+	var last_gesture = null;
 	
 	ws = new WebSocket("ws://127.0.0.1:6437/");
-	console.log(ws);
+	//console.log(ws);
 	
 	ws.onopen = function() {
 		info_websocket.text('Connected to websocket!');
@@ -19,11 +20,36 @@ $(document).ready(function(){
 	}
 	
 	ws.onmessage = function(data) {
-		dump.find('div').text(JSON.stringify(JSON.parse(data.data), undefined, 2));
+		data = JSON.parse(data.data);
+		var output = '';
+		var hand = data.hands;
+		var gesture = data.gestures;
+		
+		data = JSON.stringify(data, undefined, 2);
+		dump.find('div').text(data);
+		
+		if (!$.isEmptyObject(hand)) {
+			output = 'Hand detected';
+		}
+		else {
+			output = 'No hand detected.';
+		}
+		
+		output += '<br/><br/>';
+		
+		if (!$.isEmptyObject(gesture)) {
+			output += 'Gesture detected';
+			last_gesture = gesture;
+		}
+		else {
+			output += 'No Gesture detected.';
+		}
+		
+		output += '<br/><br/>';
+		
+		if (last_gesture != null)
+			output += 'Last gesture : '+last_gesture[0]['type'];
+		
+		$('#results').html(output);
 	}
-	
-	$('#dump_button').on('click', function(e){
-		alert('ok');
-	});
-	
 });

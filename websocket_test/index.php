@@ -5,5 +5,5 @@
 	<a id="dump_button" href="#">+++</a>
 	<div id="dump_result">No data</div>
 </div>
-
+<div id="results"></div>
 <?php require('footer.php'); ?>

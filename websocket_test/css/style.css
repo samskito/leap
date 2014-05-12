@@ -2,4 +2,5 @@ body {background:#f1f1f1;padding:20px;font-family: Arial;}
 #connection {background:#d5c2a3;border:1px solid #ccc;padding:20px;color:#666;}
 #dump_container {background:#b0ecf5;border:1px solid #ccc;padding:5px;color:#666;margin-top:10px;}
 #dump_container a {text-decoration:none;color:#2e70c2;}
-#dump_container div {background:#f1f1f1;border:1px solid #ccc;padding:5px;font-size:11px;}
+#dump_container div {background:#f1f1f1;border:1px solid #ccc;padding:5px;font-size:11px;display:none;}
+#results {background:#d5c2a3;border:1px solid #ccc;padding:20px;color:#666;margin-top:10px;}
